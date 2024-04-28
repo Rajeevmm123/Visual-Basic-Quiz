@@ -1,0 +1,279 @@
+form = 1
+
+Dim db As DAO.Database
+Dim rec As DAO.Recordset
+Dim score As Variant
+
+
+Private Sub Command1_Click()
+If rec.EOF = True Then
+Form10.Show
+Form4.Hide
+Else
+Option1.Visible = True
+Option2.Visible = True
+Option3.Visible = True
+Option4.Visible = True
+Option1.Value = False
+Option2.Value = False
+Option3.Value = False
+Option4.Value = False
+
+ Label3.Caption = rec.Fields("slno")
+Label2.Caption = rec.Fields("Question")
+Label5.Caption = rec.Fields("option1")
+Label6.Caption = rec.Fields("option2")
+Label7.Caption = rec.Fields("option3")
+Label8.Caption = rec.Fields("option4")
+Text3.Text = rec.Fields("answer")
+Timer1.Enabled = True
+rec.MoveNext
+Label4.Caption = 61
+
+Label4.Caption = Label4.Caption - 1
+If Label4.Caption = 0 Then
+Timer1.Enabled = False
+MsgBox "your time is over!", vbInformation, "message"
+rec.MoveNext
+
+
+End If
+End If
+End Sub
+
+
+
+Private Sub Command3_Click()
+rec.MoveNext
+
+End Sub
+
+Private Sub Command2_Click()
+Timer1.Enabled = False
+If Option5.Value = True Then
+
+
+If Label3.Caption = 1 Or Label3.Caption = 7 Or Label3.Caption = 10 Or Label3.Caption = 13 Or Label3.Caption = 22 Or Label3.Caption = 24 Or Label3.Caption = 29 Then
+If Option1.Value = True Then
+Text1.Text = Text1.Text + 1
+Form7.Show
+Option1.Visible = False
+Option2.Visible = False
+Option3.Visible = False
+Option4.Visible = False
+Else
+Form5.Show
+Option1.Visible = False
+Option2.Visible = False
+Option3.Visible = False
+Option4.Visible = False
+End If
+End If
+
+If Label3.Caption = 2 Or Label3.Caption = 5 Or Label3.Caption = 9 Or Label3.Caption = 11 Or Label3.Caption = 14 Or Label3.Caption = 20 Or Label3.Caption = 21 Or Label3.Caption = 25 Or Label3.Caption = 28 Or Label3.Caption = 30 Then
+If Option2.Value = True Then
+Text1.Text = Text1.Text + 1
+Form7.Show
+Option1.Visible = False
+Option2.Visible = False
+Option3.Visible = False
+Option4.Visible = False
+Else
+Form5.Show
+Option1.Visible = False
+Option2.Visible = False
+Option3.Visible = False
+Option4.Visible = False
+End If
+End If
+
+If Label3.Caption = 3 Or Label3.Caption = 4 Or Label3.Caption = 6 Or Label3.Caption = 16 Or Label3.Caption = 17 Or Label3.Caption = 23 Then
+If Option3.Value = True Then
+Text1.Text = Text1.Text + 1
+Form7.Show
+Option1.Visible = False
+Option2.Visible = False
+Option3.Visible = False
+Option4.Visible = False
+Else
+Form5.Show
+Option1.Visible = False
+Option2.Visible = False
+Option3.Visible = False
+Option4.Visible = False
+End If
+End If
+
+If Label3.Caption = 8 Or Label3.Caption = 12 Or Label3.Caption = 15 Or Label3.Caption = 18 Or Label3.Caption = 19 Or Label3.Caption = 26 Or Label3.Caption = 27 Then
+If Option4.Value = True Then
+Text1.Text = Text1.Text + 1
+Form7.Show
+Option1.Visible = False
+Option2.Visible = False
+Option3.Visible = False
+Option4.Visible = False
+
+Else
+Form5.Show
+Option1.Visible = False
+Option2.Visible = False
+Option3.Visible = False
+Option4.Visible = False
+End If
+End If
+
+End If
+
+
+
+''' team b
+
+If Option6.Value = True Then
+
+If Label3.Caption = 1 Or Label3.Caption = 7 Or Label3.Caption = 10 Or Label3.Caption = 13 Or Label3.Caption = 22 Or Label3.Caption = 24 Or Label3.Caption = 29 Then
+If Option1.Value = True Then
+Text2.Text = Text2.Text + 1
+Form7.Show
+Option1.Visible = False
+Option2.Visible = False
+Option3.Visible = False
+Option4.Visible = False
+Else
+Form5.Show
+Option1.Visible = False
+Option2.Visible = False
+Option3.Visible = False
+Option4.Visible = False
+End If
+End If
+
+If Label3.Caption = 2 Or Label3.Caption = 5 Or Label3.Caption = 9 Or Label3.Caption = 11 Or Label3.Caption = 14 Or Label3.Caption = 20 Or Label3.Caption = 21 Or Label3.Caption = 25 Or Label3.Caption = 28 Or Label3.Caption = 30 Then
+If Option2.Value = True Then
+Text2.Text = Text2.Text + 1
+Form7.Show
+Option1.Visible = False
+Option2.Visible = False
+Option3.Visible = False
+Option4.Visible = False
+Else
+Form5.Show
+Option1.Visible = False
+Option2.Visible = False
+Option3.Visible = False
+Option4.Visible = False
+End If
+End If
+
+If Label3.Caption = 3 Or Label3.Caption = 4 Or Label3.Caption = 16 Or Label3.Caption = 17 Or Label3.Caption = 23 Then
+If Option3.Value = True Then
+Text2.Text = Text2.Text + 1
+Form7.Show
+Option1.Visible = False
+Option2.Visible = False
+Option3.Visible = False
+Option4.Visible = False
+Else
+Form5.Show
+Option1.Visible = False
+Option2.Visible = False
+Option3.Visible = False
+Option4.Visible = False
+End If
+End If
+
+If Label3.Caption = 8 Or Label3.Caption = 12 Or Label3.Caption = 15 Or Label3.Caption = 18 Or Label3.Caption = 19 Or Label3.Caption = 26 Or Label3.Caption = 27 Then
+If Option4.Value = True Then
+Text2.Text = Text2.Text + 1
+Form7.Show
+Option1.Visible = False
+Option2.Visible = False
+Option3.Visible = False
+Option4.Visible = False
+Else
+Form5.Show
+Option1.Visible = False
+Option2.Visible = False
+Option3.Visible = False
+Option4.Visible = False
+End If
+End If
+
+
+End If
+
+
+
+
+End Sub
+
+Private Sub Form_Activate()
+'''Timer1.Enabled = True
+End Sub
+
+Private Sub Form_Load()
+Timer1.Enabled = True
+Set db = OpenDatabase("C:\Users\Dell\Desktop\vb\rajeev vb\finalproject1.mdb")
+Set rec = db.OpenRecordset("quiz1")
+Option1.Value = False
+Option2.Value = False
+Option3.Value = False
+Option4.Value = False
+
+If rec.EOF Then
+
+Form4.Hide
+Load Form4
+Form4.Show
+
+MsgBox "completed the survey"
+
+End If
+Label3.Caption = rec.Fields("slno")
+Label2.Caption = rec.Fields("Question")
+Label5.Caption = rec.Fields("option1")
+Label6.Caption = rec.Fields("option2")
+Label7.Caption = rec.Fields("option3")
+Label8.Caption = rec.Fields("option4")
+Text3.Text = rec.Fields("answer")
+Timer1.Enabled = True
+rec.MoveNext
+
+End Sub
+
+
+
+Private Sub Picture1_Click()
+
+End Sub
+
+Private Sub Timer1_Timer()
+
+Label4.Caption = Label4.Caption - 1
+If Label4.Caption = 0 Then
+Timer1.Enabled = False
+Form11.Show
+Option1.Visible = False
+Option2.Visible = False
+Option3.Visible = False
+Option4.Visible = False
+Label4.Caption = 60
+
+
+End If
+
+End Sub
+
+
+form=5
+
+
+Private Sub Command1_Click()
+Label1.Visible = True
+Label1.Caption = Form4.Text3.Text
+End Sub
+
+
+Private Sub Form_Load()
+Label1.Visible = False
+End Sub
+
